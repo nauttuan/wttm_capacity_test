@@ -1,0 +1,108 @@
+################################
+########### OVERVIEW ###########
+################################
+
+A single execution of "runner.sh" will repeatedly run capacity_test for both
+read-only and write-only hardware transactions while varying the stride amount.
+Output will be printed to stdout.
+
+The executable "runner.sh" takes a compiler optimization level as argument.
+
+################################
+########## HOW TO RUN ##########
+################################
+
+Example (testing optimization level 0):
+./runner.sh 0
+
+Example (testing optimization level 2):
+./runner.sh 2
+
+################################
+######## SAMPLE OUTPUT #########
+################################
+
+$ ./runner.sh 2
+rm -f capacity_test
+gcc -std=gnu99 -mrtm -O2 -o capacity_test capacity_test.c
+
+###################
+### Stride: 2^0
+###################
+
+Read-Only
+completed 1000/1000 transactions of size 1 cache lines with stride 2^0
+completed 1000/1000 transactions of size 2 cache lines with stride 2^0
+completed 1000/1000 transactions of size 4 cache lines with stride 2^0
+completed 1000/1000 transactions of size 8 cache lines with stride 2^0
+completed 1000/1000 transactions of size 16 cache lines with stride 2^0
+completed 1000/1000 transactions of size 32 cache lines with stride 2^0
+completed 1000/1000 transactions of size 64 cache lines with stride 2^0
+completed 1000/1000 transactions of size 128 cache lines with stride 2^0
+completed 996/1000 transactions of size 256 cache lines with stride 2^0
+completed 1000/1000 transactions of size 512 cache lines with stride 2^0
+completed 997/1000 transactions of size 1024 cache lines with stride 2^0
+completed 998/1000 transactions of size 2048 cache lines with stride 2^0
+completed 983/1000 transactions of size 4096 cache lines with stride 2^0
+completed 992/1000 transactions of size 8192 cache lines with stride 2^0
+completed 981/1000 transactions of size 16384 cache lines with stride 2^0
+completed 951/1000 transactions of size 32768 cache lines with stride 2^0
+completed 916/1000 transactions of size 65536 cache lines with stride 2^0
+FAIL: no committed transactions of size 131072 cache lines with stride 2^0
+
+Write-Only
+completed 1000/1000 transactions of size 1 cache lines with stride 2^0
+completed 1000/1000 transactions of size 2 cache lines with stride 2^0
+completed 1000/1000 transactions of size 4 cache lines with stride 2^0
+completed 1000/1000 transactions of size 8 cache lines with stride 2^0
+completed 1000/1000 transactions of size 16 cache lines with stride 2^0
+completed 1000/1000 transactions of size 32 cache lines with stride 2^0
+completed 1000/1000 transactions of size 64 cache lines with stride 2^0
+completed 1000/1000 transactions of size 128 cache lines with stride 2^0
+completed 998/1000 transactions of size 256 cache lines with stride 2^0
+FAIL: no committed transactions of size 512 cache lines with stride 2^0
+
+###################
+### Stride: 2^1
+###################
+
+Read-Only
+completed 1000/1000 transactions of size 1 cache lines with stride 2^1
+completed 1000/1000 transactions of size 2 cache lines with stride 2^1
+completed 1000/1000 transactions of size 4 cache lines with stride 2^1
+completed 1000/1000 transactions of size 8 cache lines with stride 2^1
+completed 1000/1000 transactions of size 16 cache lines with stride 2^1
+completed 1000/1000 transactions of size 32 cache lines with stride 2^1
+completed 1000/1000 transactions of size 64 cache lines with stride 2^1
+completed 1000/1000 transactions of size 128 cache lines with stride 2^1
+completed 1000/1000 transactions of size 256 cache lines with stride 2^1
+completed 997/1000 transactions of size 512 cache lines with stride 2^1
+completed 1000/1000 transactions of size 1024 cache lines with stride 2^1
+completed 987/1000 transactions of size 2048 cache lines with stride 2^1
+completed 992/1000 transactions of size 4096 cache lines with stride 2^1
+completed 980/1000 transactions of size 8192 cache lines with stride 2^1
+completed 982/1000 transactions of size 16384 cache lines with stride 2^1
+completed 912/1000 transactions of size 32768 cache lines with stride 2^1
+FAIL: no committed transactions of size 65536 cache lines with stride 2^1
+
+Write-Only
+completed 1000/1000 transactions of size 1 cache lines with stride 2^1
+completed 1000/1000 transactions of size 2 cache lines with stride 2^1
+completed 1000/1000 transactions of size 4 cache lines with stride 2^1
+completed 1000/1000 transactions of size 8 cache lines with stride 2^1
+completed 1000/1000 transactions of size 16 cache lines with stride 2^1
+completed 1000/1000 transactions of size 32 cache lines with stride 2^1
+completed 1000/1000 transactions of size 64 cache lines with stride 2^1
+completed 999/1000 transactions of size 128 cache lines with stride 2^1
+FAIL: no committed transactions of size 256 cache lines with stride 2^1
+
+###################
+### Stride: 2^2
+###################
+
+.
+.
+.
+.
+.
+
